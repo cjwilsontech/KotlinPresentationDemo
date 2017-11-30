@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
 		mTimer?.cancel()
 		mTimer = null
 		mTimerRunning = false
+		mCount = 0
 		txtTimerStatus.text = getText(R.string.timer_stopped)
 		btnTimerControl.text = getText(R.string.timer_start)
 	}
@@ -37,7 +38,8 @@ class MainActivity : AppCompatActivity() {
 		mTimer?.schedule(object : TimerTask() {
 			override fun run() = runOnUiThread {
 				// Update the view.
-				txtTimerStatus.text = (mCount++).toString()
+				txtTimerStatus.text = "Count: $mCount"
+				mCount++
 			}
 		}, 0, TIMER_DELAY)
 		
